@@ -1,18 +1,25 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello, my name is hamza"
+    return jsonify({"message": "Hello, my name is Hamza"})
 
 @app.route('/bio')
 def biodata():
-    return "age is 20 \nstudy in uit university \nlive in karachi"
+    return jsonify({
+        "age": 20,
+        "university": "UIT University",
+        "city": "Karachi"
+    })
 
 @app.route('/study')
 def studydetail():
-    return "name:uit univeersity \ndegree:BS(CS) "
-# Flask example: Bind to ALL interfaces (0.0.0.0)
+    return jsonify({
+        "name": "UIT University",
+        "degree": "BS(CS)"
+    })
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)  # Replace 5000 with your port
+    app.run(host='0.0.0.0', port=5000)
